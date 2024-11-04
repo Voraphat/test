@@ -18,7 +18,7 @@ const HomeAdmin = () => {
     const [name, setName] = useState("");
     const [lastName, setLastName] = useState("");
     const [position, setPosition] = useState("");
-    const [ dataMock , setDataMock] = useState(mockData);
+    const [dataMock , setDataMock] = useState(mockData);
 
     const handleCreateData =  (event) => {
         event.preventDefault();
@@ -31,7 +31,6 @@ const HomeAdmin = () => {
             position: position,
         }
         setDataMock([...dataMock, bank]);
-        console.log('mockData', dataMock);
     };
 
   return (
