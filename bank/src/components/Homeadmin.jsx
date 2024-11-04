@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-const Homeadmin = () => {
+const HomeAdmin = () => {
 
     let mockData = [
         {
@@ -16,24 +16,23 @@ const Homeadmin = () => {
     }
 
     const [name, setName] = useState("");
-    const [lastname, setLastname] = useState("");
+    const [lastName, setLastName] = useState("");
     const [position, setPosition] = useState("");
+    const [ dataMock , setDataMock] = useState(mockData);
 
-    const handleCreateData =  () => {
+    const handleCreateData =  (event) => {
         event.preventDefault();
         console.log('name', name);
-        console.log('lastname', lastname);
+        console.log('lastName', lastName);
         console.log('position', position);
-        mockData.push({
-            id: mockData.length + 1,
+        let bank = {
             name: name,
-            lastName: lastname,
+            lastName: lastName,
             position: position,
-        });
-        console.log('mockData', mockData);
-        // setLastname('');
-        // setName('');
-        // setPosition('');
+        }
+        setDataMock([...dataMock, bank]);
+        console.log('mockData', dataMock);
+            
     };
 
   return (
@@ -56,7 +55,7 @@ const Homeadmin = () => {
                 
                 <input className='border border-black' 
                 name='lastName ' 
-                onChange={(ev) => setLastname(ev.target.value)} 
+                onChange={(ev) => setLastName(ev.target.value)} 
                 type="text" 
                 placeholder='LastName'/>
 
@@ -64,7 +63,7 @@ const Homeadmin = () => {
                 name='position'  
                 onChange={(ev) => setPosition(ev.target.value)}
                 type="text" 
-                placeholder='Postition' />
+                placeholder='Position' />
                 <button
                 onClick={handleCreateData}
                 className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg"
@@ -81,14 +80,14 @@ const Homeadmin = () => {
           <th className="border border-black">Position</th>
           <th className="border border-black">Action</th>
         </tr>
-        {mockData.map((data) => {
+        {dataMock.map((data) => {
             return (
                 <tr className="border border-black" key={data.id}>
                     <td className="border border-black">{data.name}</td>
                     <td className="border border-black">{data.lastName}</td>
                     <td className="border border-black">{data.position}</td>
                     <td className="border border-black">
-                        <button className="border border-black" onClick={handleDelete(data.id)}>Delete</button>
+                        <button className="border border-black" onClick={() => handleDelete(data.id)}>Delete</button>
                     </td>
                 </tr>
             )
@@ -98,4 +97,4 @@ const Homeadmin = () => {
   );
 }
 
-export default Homeadmin
+export default HomeAdmin
