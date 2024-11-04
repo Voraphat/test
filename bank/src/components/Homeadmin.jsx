@@ -32,7 +32,6 @@ const HomeAdmin = () => {
         }
         setDataMock([...dataMock, bank]);
         console.log('mockData', dataMock);
-            
     };
 
   return (
